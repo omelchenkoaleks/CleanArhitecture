@@ -1,5 +1,11 @@
 package com.omelchenkoaleks.cleanarchitecture.domain.interactors.impl;
 
+import com.omelchenkoaleks.cleanarchitecture.domain.executor.Executor;
+import com.omelchenkoaleks.cleanarchitecture.domain.executor.MainThread;
+import com.omelchenkoaleks.cleanarchitecture.domain.interactors.SampleInteractor;
+import com.omelchenkoaleks.cleanarchitecture.domain.interactors.base.AbstractInteractor;
+import com.omelchenkoaleks.cleanarchitecture.domain.repository.Repository;
+
 /**
  * This is an interactor boilerplate with a reference to a model repository.
  * <p/>
@@ -7,7 +13,7 @@ package com.omelchenkoaleks.cleanarchitecture.domain.interactors.impl;
 public class SampleInteractorImpl extends AbstractInteractor implements SampleInteractor {
 
     private SampleInteractor.Callback mCallback;
-    private Repository                mRepository;
+    private Repository mRepository;
 
     public SampleInteractorImpl(Executor threadExecutor,
                                 MainThread mainThread,

@@ -1,10 +1,18 @@
 package com.omelchenkoaleks.cleanarchitecture.domain.executor.impl;
 
+import com.omelchenkoaleks.cleanarchitecture.domain.executor.Executor;
+import com.omelchenkoaleks.cleanarchitecture.domain.interactors.base.AbstractInteractor;
+
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 /**
  * This singleton class will make sure that each interactor operation gets a background thread.
  * <p/>
  */
-public class ThreadExecutor {
+public class ThreadExecutor implements Executor {
 
     // This is a singleton
     private static volatile ThreadExecutor sThreadExecutor;
@@ -25,5 +33,31 @@ public class ThreadExecutor {
                 keepAlive,
                 TIME_UNIT,
                 WORK_QUEUE);
+    }
+
+    @Override
+    public void execute(final AbstractInteractor interactor) {
+        mThreadPoolExecutor.submit(new Runnable() {
+            @Override
+            public void run() {
+                // run the main logic
+                interactor.run();
+
+                // mark it as finished
+                interactor.onFinished();
+            }
+        });
+    }
+
+    /**
+     * Returns a singleton instance of this executor. If the executor is not initialized then it initializes it and returns
+     * the instance.
+     */
+    public static Executor getInstance() {
+        if (sThreadExecutor == null) {
+            sThreadExecutor = new ThreadExecutor();
+        }
+
+        return sThreadExecutor;
     }
 }

@@ -1,5 +1,7 @@
 package com.omelchenkoaleks.cleanarchitecture.domain.repository;
 
+import com.omelchenkoaleks.cleanarchitecture.domain.model.SampleModel;
+
 /**
  * A sample repository with CRUD operations on a model.
  */

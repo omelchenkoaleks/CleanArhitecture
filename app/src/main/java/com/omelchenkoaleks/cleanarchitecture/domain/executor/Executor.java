@@ -1,10 +1,12 @@
 package com.omelchenkoaleks.cleanarchitecture.domain.executor;
 
+import com.omelchenkoaleks.cleanarchitecture.domain.interactors.base.AbstractInteractor;
+
 /**
  * This executor is responsible for running interactors on background threads.
  * <p/>
  */
-public class Executor {
+public interface Executor {
 
     /**
      * This method should call the interactor's run method and thus start the interactor. This should be called

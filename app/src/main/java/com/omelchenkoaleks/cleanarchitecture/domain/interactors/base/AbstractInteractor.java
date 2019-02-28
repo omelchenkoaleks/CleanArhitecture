@@ -1,6 +1,9 @@
 package com.omelchenkoaleks.cleanarchitecture.domain.interactors.base;
 
 
+import com.omelchenkoaleks.cleanarchitecture.domain.executor.Executor;
+import com.omelchenkoaleks.cleanarchitecture.domain.executor.MainThread;
+
 /**
  * Created by dmilicic on 8/4/15.
  * <p/>
