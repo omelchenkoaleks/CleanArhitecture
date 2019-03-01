@@ -1,5 +1,6 @@
 package com.omelchenkoaleks.cleanarchitecture.domain.repository;
 
+
 import com.omelchenkoaleks.cleanarchitecture.domain.model.SampleModel;
 
 /**
